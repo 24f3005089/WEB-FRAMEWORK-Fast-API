@@ -15,7 +15,7 @@ app.add_middleware(
 
 students_data = []
 
-csv_path = "students.csv"
+csv_path = "student.csv"
 
 # Load CSV data
 if os.path.exists(csv_path):
