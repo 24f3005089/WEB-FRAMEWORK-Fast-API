@@ -17,6 +17,7 @@ students_data = []
 
 csv_path = "students.csv"
 
+# Load CSV data
 if os.path.exists(csv_path):
     with open(csv_path, newline="", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -36,11 +37,18 @@ async def get_students(
     class_: list[str] | None = Query(default=None, alias="class")
 ):
 
+    # Filter by class if query params exist
     if class_:
         filtered = [
             student for student in students_data
             if student["class"] in class_
         ]
-        return {"students": filtered}
 
-    return {"students": students_data}
+        return {
+            "students": filtered
+        }
+
+    # Return all students
+    return {
+        "students": students_data
+    }
